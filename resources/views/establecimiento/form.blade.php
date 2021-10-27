@@ -21,55 +21,45 @@
     @endif
 
 
-    <div class="col-md-12">
+
         <div class="form-group">
             <label for="nombre_establecimiento">Nombre del Establecimiento</label>
             <input class="form-control" type="text" name="nombre_establecimiento" value="{{isset($establecimiento->nombre_establecimiento)? $establecimiento->nombre_establecimiento:old('nombre_establecimiento') }}">
         </div>
-    </div>
 
-    <div class="col-md-12">
+
+    
         <div class="form-group">
             <label for="descripcion_establecimiento">Descripción</label>
             <textarea row="3" class="form-control" type="text" name="descripcion_establecimiento" value="{{isset($establecimiento->descripcion_establecimiento)? $establecimiento->descripcion_establecimiento:old('descripcion_establecimiento') }}"></textarea>
         </div>
-    </div>
 
 
-    <div class="col-md-12">
+
         <div class="form-group">
             <label for="dirección_establecimiento">Dirección</label>
             <input class="form-control" type="text" name="dirección_establecimiento" value="{{isset($establecimiento->dirección_establecimiento)? $establecimiento->dirección_establecimiento:old('dirección_establecimiento') }}">
         </div>
-    </div>
 
-
-    <div class="col-md-12">
         <div class="form-group">
             <label for="num_telefono">Teléfono</label>
             <input class="form-control" type="number" name="num_telefono" value="{{isset($establecimiento->num_telefono)? $establecimiento->num_telefono:old('num_telefono') }}">
         </div>
-    </div>
 
 
-    <div class="col-md-12">
         <div class="form-group">
             <label for="email">Correo Electrónico</label>
             <input class="form-control" type="email" name="email" value="{{isset($establecimiento->email)? $establecimiento->email:old('email') }}">
         </div>
-    </div>
 
 
-    <div class="col-md-12">
-        <div class="form-floating">
-            <label for="tipo_establecimiento">Tipo de establecimiento</label>
-            <select name="tipo_establecimiento" class="form-select" aria-label="Default select example">
-                <option selected value="Bar">Bar</option>
-                <option value="Cafetería">Cafetería</option>
-                <option value="Restaurante">Restaurante</option>
-            </select>
+
+
+        <div class="form-group">
+            <label for="tipo_establecimiento">Correo Electrónico</label>
+            <input class="form-control" type="tipo_establecimiento" name="tipo_establecimiento" value="{{isset($establecimiento->tipo_establecimiento)? $establecimiento->tipo_establecimiento:old('tipo_establecimiento') }}">
         </div>
-    </div>
+
 
 
     <div class="form-group">

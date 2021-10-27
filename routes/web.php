@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartaController;
 use App\Http\Controllers\EstablecimientoController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,13 +24,17 @@ Route::get('/', function () {
 //El middleware lo que provoca es que no permita sin haber hecho el registro entrar, aunque tengas las URLs
 Route::resource('establecimiento', 'EstablecimientoController')->middleware('auth');
 
+Route::resource('producto', 'ProductoController')->middleware('auth');
+
 Auth::routes();
 
-Route::get('/home', [EstablecimientoController::class, 'index'])->name('home');
+Route::get('/home', [EstablecimientoController::class, 'index'])->name('index');
 
 Route::prefix(['middleware' => 'auth'], function () {
     Route::get('/', [EstablecimientoController::class, 'index'])->name('home');
 });
+
+
 
 //Si quisiera eliminar el registro o la recuperación de contraseña+
 
