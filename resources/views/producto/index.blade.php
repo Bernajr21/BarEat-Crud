@@ -45,7 +45,7 @@
                 </td>
                 <td>{{ $producto_one->nombre_producto }}</td>
                 <td>{{ $producto_one->descripcion_producto}}</td>
-                <td>{{ $producto_one->precio_producto }}</td>
+                <td>{{ $producto_one->precio_producto }}€</td>
                 <td>{{ $producto_one->tipo_producto }}</td>
                 <td>
                     <a href="{{ url('/producto/'.$producto_one->id.'/edit') }}" class="btn btn-warning">Editar</a>

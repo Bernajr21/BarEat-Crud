@@ -53,10 +53,8 @@
         </div>
 
 
-
-
         <div class="form-group">
-            <label for="tipo_establecimiento">Correo Electrónico</label>
+            <label for="tipo_establecimiento">Tipo de establecimiento</label>
             <input class="form-control" type="tipo_establecimiento" name="tipo_establecimiento" value="{{isset($establecimiento->tipo_establecimiento)? $establecimiento->tipo_establecimiento:old('tipo_establecimiento') }}">
         </div>
 
