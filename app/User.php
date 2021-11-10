@@ -4,12 +4,14 @@ namespace App;
 
 use App\Helpers\Token;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;   
 
-class User extends Model
+
+class User extends Authenticatable
 {
     use Notifiable;
+
 
     public $resource = UserResource::class;
 
@@ -19,7 +21,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellidos', 'email', 'num_telefono', 'fecha_nacimiento', 'password',
+        'name', 'apellidos', 'email', 'num_telefono', 'fecha_nacimiento', 'password',
     ];
 
     /**

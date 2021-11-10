@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 <div class="container">
 
     <h1>{{$modo}} establecimiento</h1>
@@ -97,4 +95,3 @@
     <a href="{{ url('establecimiento')}}" class="btn btn-primary">Inicio</a>
 
 </div>
-@endsection
