@@ -14,22 +14,20 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::disableForeignKeyConstraints();
-        if (!Schema::hasTable('users')) {
-            Schema::create('users', function (Blueprint $table) {
 
-                $table->id();
-                $table->string('name');
-                $table->string('apellidos')->nullable();
-                //$table->string('tipo');
-                $table->string('email')->unique();
-                $table->integer('num_telefono')->nullable();
-                $table->date('fecha_nacimiento')->nullable();
-                $table->timestamp('email_verified_at')->nullable();
-                $table->string('password');
-                $table->rememberToken();
-                $table->timestamps();
-            });
-        }
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('apellidos');
+            //$table->string('tipo');
+            $table->string('email')->unique();
+            $table->integer('num_telefono')->nullable();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**

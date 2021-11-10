@@ -13,15 +13,13 @@ class CreateTipoUsuariosTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('users')) {
-            Schema::disableForeignKeyConstraints();
-
-            Schema::create('tipo_usuarios', function (Blueprint $table) {
-                $table->id();
-                $table->string('tipo');
-                $table->timestamps();
-            });
-        }
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::create('tipo_usuarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('tipo');
+            $table->timestamps();
+        });
     }
 
     /**

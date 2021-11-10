@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
+
 class TipoUsuarioSeeder extends Seeder
 {
     /**
@@ -11,15 +12,12 @@ class TipoUsuarioSeeder extends Seeder
      */
     public function run()
     {
-        if (!Schema::hasTable('users')) {
-            Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
 
-            \App\TipoUsuario::truncate();
-            \App\TipoUsuario::create(['tipo' => 'cliente',]);
-            \App\TipoUsuario::create(['tipo' => 'propietario',]);
-    
-            Schema::enableForeignKeyConstraints();
-        }
-       
+        \App\TipoUsuario::truncate();
+        \App\TipoUsuario::create(['tipo' => 'cliente',]);
+        \App\TipoUsuario::create(['tipo' => 'propietario',]);
+
+        Schema::enableForeignKeyConstraints();
     }
 }
