@@ -17,16 +17,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::resource('/', 'ProductoController');
+Route::get('/', function(){
+    return view ('auth.login');
+});
 
 //El middleware lo que provoca es que no permita sin haber hecho el registro entrar, aunque tengas las URLs
-Route::resource('/establecimiento', 'EstablecimientoController');//->middleware('auth');
+Route::resource('/establecimiento', 'EstablecimientoController')->middleware('auth');
 
-Route::resource('/producto', 'ProductoController');
+Route::resource('/producto', 'ProductoController')->middleware('auth');
 
-//Auth::routes();
-
-//Route::get('/home', [EstablecimientoController::class, 'index'])->name('index');
 
 Route::prefix(['middleware' => 'auth'], function () {
     Route::get('/', [EstablecimientoController::class, 'index'])->name('home');
