@@ -1,5 +1,12 @@
+@extends('adminlte::page')
 
+@section('title', 'Establecimiento')
 
+@section('content_header')
+<br>
+@stop
+
+@section('content')
 
 <div class="container">
 
@@ -79,6 +86,19 @@
     </table>
 
 
-{!! $establecimiento->links() !!}
+    {!! $establecimiento->links() !!}
 
 </div>
+
+
+@stop
+
+@section('css')
+<link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+<script>
+    console.log('Hi!');
+</script>
+@stop

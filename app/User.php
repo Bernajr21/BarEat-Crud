@@ -102,4 +102,18 @@ class User extends Authenticatable
     public function imagenes(){
         return $this->hasMany('App\Imagen');
     }
+
+    //Para añadirle la imagen a los usuarios
+
+    public function adminlte_image(){
+        return 'https://images.pexels.com/photos/4676640/pexels-photo-4676640.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260';
+    }
+
+    public function adminlte_desc(){
+        return "Administrador";
+    }
+
+    public function adminlte_profile_url(){
+        return '#';
+    }
 }
