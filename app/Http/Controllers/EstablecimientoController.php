@@ -6,7 +6,7 @@ use App\Establecimiento;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateEstablecimiento;
 use App\Http\Resources\EstablecimientoResource;
-
+use App\User;
 use Illuminate\Support\Facades\Storage;
 
 class EstablecimientoController extends Controller
@@ -44,7 +44,10 @@ class EstablecimientoController extends Controller
     }
     public function create()
     {
-        return view('establecimiento.create');
+
+        $usuario = User::all();
+
+        return view('establecimiento.create', compact('usuario'));
     }
 
     public function edit($id)
@@ -52,8 +55,9 @@ class EstablecimientoController extends Controller
         $establecimiento = Establecimiento::findOrFail($id);
 
        
-        
-        return view('establecimiento.edit', compact('establecimiento'));
+        $usuario = User::all();
+
+        return view('establecimiento.edit', compact('establecimiento'), compact('usuario'));
     }
 
     public function store(Request $request)

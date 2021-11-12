@@ -1,4 +1,3 @@
-
 <div class="container">
 
     <h1>{{$modo}} establecimiento</h1>
@@ -20,43 +19,48 @@
 
 
 
-        <div class="form-group">
-            <label for="nombre_establecimiento">Nombre del Establecimiento</label>
-            <input class="form-control" type="text" name="nombre_establecimiento" value="{{isset($establecimiento->nombre_establecimiento)? $establecimiento->nombre_establecimiento:old('nombre_establecimiento') }}">
-        </div>
-
-
-    
-        <div class="form-group">
-            <label for="descripcion_establecimiento">Descripción</label>
-            <textarea row="3" class="form-control" type="text" name="descripcion_establecimiento" value="{{isset($establecimiento->descripcion_establecimiento)? $establecimiento->descripcion_establecimiento:old('descripcion_establecimiento') }}"></textarea>
-        </div>
+    <div class="form-group">
+        <label for="nombre_establecimiento">Nombre del Establecimiento</label>
+        <input class="form-control" type="text" name="nombre_establecimiento" value="{{isset($establecimiento->nombre_establecimiento)? $establecimiento->nombre_establecimiento:old('nombre_establecimiento') }}">
+    </div>
 
 
 
-        <div class="form-group">
-            <label for="dirección_establecimiento">Dirección</label>
-            <input class="form-control" type="text" name="dirección_establecimiento" value="{{isset($establecimiento->dirección_establecimiento)? $establecimiento->dirección_establecimiento:old('dirección_establecimiento') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="num_telefono">Teléfono</label>
-            <input class="form-control" type="number" name="num_telefono" value="{{isset($establecimiento->num_telefono)? $establecimiento->num_telefono:old('num_telefono') }}">
-        </div>
+    <div class="form-group">
+        <label for="descripcion_establecimiento">Descripción</label>
+        <textarea row="3" class="form-control" type="text" name="descripcion_establecimiento" value="{{isset($establecimiento->descripcion_establecimiento)? $establecimiento->descripcion_establecimiento:old('descripcion_establecimiento') }}"></textarea>
+    </div>
 
 
-        <div class="form-group">
-            <label for="email">Correo Electrónico</label>
-            <input class="form-control" type="email" name="email" value="{{isset($establecimiento->email)? $establecimiento->email:old('email') }}">
-        </div>
+
+    <div class="form-group">
+        <label for="dirección_establecimiento">Dirección</label>
+        <input class="form-control" type="text" name="dirección_establecimiento" value="{{isset($establecimiento->dirección_establecimiento)? $establecimiento->dirección_establecimiento:old('dirección_establecimiento') }}">
+    </div>
+
+    <div class="form-group">
+        <label for="num_telefono">Teléfono</label>
+        <input class="form-control" type="number" name="num_telefono" value="{{isset($establecimiento->num_telefono)? $establecimiento->num_telefono:old('num_telefono') }}">
+    </div>
 
 
-        <div class="form-group">
-            <label for="tipo_establecimiento">Tipo de establecimiento</label>
-            <input class="form-control" type="tipo_establecimiento" name="tipo_establecimiento" value="{{isset($establecimiento->tipo_establecimiento)? $establecimiento->tipo_establecimiento:old('tipo_establecimiento') }}">
-        </div>
+    <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input class="form-control" type="email" name="email" value="{{isset($establecimiento->email)? $establecimiento->email:old('email') }}">
+    </div>
 
-
+    <div class="form-group">
+        <x-adminlte-select name="tipo_establecimiento" label="Selecciona tipo de establecimiento" label-class="text-dark" igroup-size="md">
+            <x-slot name="prependSlot">
+                <div class="input-group-text bg-gradient-success">
+                    <i class="fas fa-home"></i>
+                </div>
+            </x-slot>
+            <option value="Bar">Bar</option>
+            <option value="Cafetería">Cafetería</option>
+            <option value="Restaurante">Restaurante</option>
+        </x-adminlte-select>
+    </div>
 
     <div class="form-group">
         <label for="nif">NIF</label>
@@ -76,19 +80,37 @@
 
     </div>
 
-    <div class="form-group">
-        <label for="user_id">Usuario Id</label>
-        <input class="form-control" type="text" name="user_id" value="{{isset($establecimiento->user_id)? $establecimiento->user_id:old('user_id') }}">
 
+    <div class="form-group">
+        <x-adminlte-select name="user_id" label="Selecciona usuario" label-class="text-dark" igroup-size="md">
+            <x-slot name="prependSlot">
+                <div class="input-group-text bg-gradient-success">
+                    <i class="fas fa-users"></i>
+                </div>
+            </x-slot>
+            @foreach ($usuario as $user)
+            <option value="{{$user -> id}}">{{$user -> name}}</option>
+            @endforeach
+        </x-adminlte-select>
     </div>
+
+
     <div class="form-group">
         <label for="ruta_foto_principal">Fotografía</label>
         @if(isset($establecimiento->ruta_foto_principal))
         <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$establecimiento->ruta_foto_principal}}" width="100" alt="">
         @endif
-        <input class="form-control" type="file" name="ruta_foto_principal">
+        <x-adminlte-input-file name="ruta_foto_principal" igroup-size="md" placeholder="Elige una foto...">
+            <x-slot name="prependSlot">
+                <div class="input-group-text bg-lightblue">
+                    <i class="fas fa-upload"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input-file>
 
     </div>
+
+
 
     <input class="btn btn-success" type="submit" value="{{$modo}} datos">
 
