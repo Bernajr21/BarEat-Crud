@@ -15,7 +15,8 @@
     </div>
 
     <div class="card-body">
-        <p>Bienvenido al panel de administrador.</p>
+
+        <h4>Bienvenido  {{ auth()->user()->name }} </h4>
     </div>
 </div>
 

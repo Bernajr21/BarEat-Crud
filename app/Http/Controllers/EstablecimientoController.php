@@ -24,7 +24,7 @@ class EstablecimientoController extends Controller
             $establecimientos = Establecimiento::all();
             return $establecimientos;
         } else {
-            $datos['establecimiento'] = Establecimiento::paginate(5);
+            $datos['establecimiento'] = Establecimiento::paginate(50);
             return view('establecimiento.index', $datos);
         }
     }
