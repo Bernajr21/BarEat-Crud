@@ -250,7 +250,7 @@ return [
         ],
         [
             'text' => 'Cartas',
-            'url' => '/#',
+            'url' => '/carta',
             'topnav' => true
         ],
         [
@@ -274,7 +274,7 @@ return [
         ],
         [
             'text' => 'Cartas',
-            'url' => '/#',
+            'url' => '/carta',
             'icon' => 'fas fa-fw fa-bookmark',
             'label' => '+',
             'label_color' => 'success',

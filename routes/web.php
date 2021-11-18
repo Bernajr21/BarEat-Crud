@@ -26,6 +26,8 @@ Route::resource('/establecimiento', 'EstablecimientoController')->middleware('au
 
 Route::resource('/producto', 'ProductoController')->middleware('auth');
 
+Route::resource('/carta', 'CartaController')->middleware('auth');
+
 
 Route::prefix(['middleware' => 'auth'], function () {
     Route::get('/', [EstablecimientoController::class, 'index'])->name('home');

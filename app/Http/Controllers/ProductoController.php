@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Establecimiento;
 use App\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProducto;
@@ -22,7 +23,8 @@ class ProductoController extends Controller
 
     public function create()
     {
-        return view('producto.create');
+        $establecimiento = Establecimiento::all();
+        return view('producto.create',compact('establecimiento'));
     }
 
     public function update(UpdateProducto $request, $id)
@@ -84,9 +86,9 @@ class ProductoController extends Controller
     {
         $producto = Producto::findOrFail($id);
 
+        $establecimiento = Establecimiento::all();
 
-
-        return view('producto.edit', compact('producto'));
+        return view('producto.edit', compact('producto'), compact('establecimiento'));
     }
 
     public function store(Request $request)

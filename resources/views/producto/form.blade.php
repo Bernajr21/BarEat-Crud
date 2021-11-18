@@ -45,9 +45,19 @@
         </select>
     </div>
 
+    {{-- <input type="hidden" id="carta_id" name="carta_id" value="1"> Si lo quisieramos ocultar--}}
+
     <div class="form-group">
-        <label for="carta_id">ID de la Carta</label>
-        <input class="form-control" type="carta_id" name="carta_id" value="{{isset($producto->carta_id)? $producto->carta_id:old('carta_id') }}">
+        <x-adminlte-select name="carta_id" label="Selecciona establecimiento" label-class="text-dark" igroup-size="md">
+            <x-slot name="prependSlot">
+                <div class="input-group-text bg-gradient-success">
+                    <i class="fas fa-home"></i>
+                </div>
+            </x-slot>
+            @foreach ($establecimiento as $establecimiento_one)
+            <option value="2">{{$establecimiento_one -> nombre_establecimiento}}</option>
+            @endforeach
+        </x-adminlte-select>
     </div>
 
 
@@ -56,9 +66,13 @@
         @if(isset($producto->ruta_foto_principal))
         <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto->ruta_foto_principal}}" width="100" alt="">
         @endif
-        <input class="form-control" type="file" name="ruta_foto_principal">
-
-    </div>
+        <x-adminlte-input-file name="ruta_foto_principal" igroup-size="md" placeholder="Elige una foto...">
+            <x-slot name="prependSlot">
+                <div class="input-group-text bg-lightblue">
+                    <i class="fas fa-upload"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input-file>
 
     <input class="btn btn-success" type="submit" value="{{$modo}} datos">
 
