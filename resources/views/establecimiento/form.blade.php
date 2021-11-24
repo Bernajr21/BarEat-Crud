@@ -28,10 +28,10 @@
 
     <div class="form-group">
         <label for="descripcion_establecimiento">Descripción</label>
-        <textarea row="3" class="form-control" type="text" name="descripcion_establecimiento" value="{{isset($establecimiento->descripcion_establecimiento)? $establecimiento->descripcion_establecimiento:old('descripcion_establecimiento') }}"></textarea>
+        <input class="form-control" type="text" name="descripcion_establecimiento" value="{{isset($establecimiento->descripcion_establecimiento)? $establecimiento->descripcion_establecimiento:old('descripcion_establecimiento') }}">
     </div>
 
-
+    
 
     <div class="form-group">
         <label for="dirección_establecimiento">Dirección</label>
