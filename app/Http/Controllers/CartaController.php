@@ -28,8 +28,9 @@ class CartaController extends Controller
     {
 
         $producto = Producto::all();
+        $establecimiento = Establecimiento::all();
 
         $datos['cartas'] = Carta::paginate(15);
-        return view('carta.index', $datos, compact('producto'));
+        return view('carta.index', $datos,compact('establecimiento','producto'));
     }
 }

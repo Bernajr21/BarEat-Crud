@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateEstablecimiento;
 use App\Http\Resources\EstablecimientoResource;
 use App\User;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class EstablecimientoController extends Controller
 {
@@ -69,7 +71,10 @@ class EstablecimientoController extends Controller
             'descripcion_establecimiento' => 'required|string|max:100',
             'dirección_establecimiento' => 'required|string|max:100',
             'num_telefono' => 'string|max:10',
-            'email' => 'email|required|max:20',
+            'email' => [
+                'required', 'email',
+                
+            ],
             'tipo_establecimiento' => 'required|string|max:20',
             'nif' => 'string|required|max:20',
             'maximo_numero_comensales' => 'required|string|max:20',
@@ -148,6 +153,11 @@ class EstablecimientoController extends Controller
                 'aforo' => 'required|string|max:20',
                 'ruta_foto_principal' => 'max:10000|mimes:jpeg,png,jpg',
                 'user_id' => 'string|required|max:20',
+                'email' => [
+                    'required', 'email',
+                    
+                ]
+    
             ];
 
             $mensaje = [

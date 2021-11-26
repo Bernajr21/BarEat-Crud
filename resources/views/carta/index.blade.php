@@ -11,9 +11,11 @@
 <div class="container">
 
     <div class="container">
-{{-- 
+        
+        
+
         <h1>Listado de productos de nuestra Carta</h1>
-        <a href="{{ url('producto/create')}}" class="btn btn-success">Crear un nuevo producto</a>
+        <a href="{{ url('carta/create')}}" class="btn btn-success">Crear una nueva carta</a>
         <br>
         <br>
 
@@ -27,73 +29,47 @@
             </button>
 
         </div>
-        @endif --}}
+        @endif
+        
+        
+        
+        @foreach($establecimiento as $establecimiento_one)
+        @if(auth()->user()->id == $establecimiento_one->user_id)
+
+        
+            <x-adminlte-card title="{{$establecimiento_one->nombre_establecimiento}}" theme="dark" icon="fas fa-lg fa-utensils">
+                <b>Dueño:</b> {{ auth()->user()->name }} <br>
+                <b>Email:</b> {{ $establecimiento_one->email }} <br>
+                <b>Dirección:</b> {{ $establecimiento_one->dirección_establecimiento }} <br>
+            </x-adminlte-card>
+
+            <h2>Nuestros productos:</h2>
+
+            @foreach( $cartas as $carta_one)
 
 
-        {{-- <ul>
-            @foreach ($cartas as $carta_one)
-                <li>{{$carta_one->id}}</li>
+            @if($establecimiento_one->id == $carta_one->establecimiento_id)
+
+            
+            @foreach( $producto as $producto_one)
+
+            @if($carta_one->id == $producto_one->carta_id)
+            
+
+                <x-adminlte-card title="{{$producto_one->nombre_producto }}" theme="green" icon="fas fa-lg fa-hamburger">
+                    <b>Descripción del Producto:</b> {{$producto_one->descripcion_producto}} <br>
+                    <b>Precio:</b> {{ $producto_one->precio_producto }} <br>
+                    <b>Tipo de producto:</b> {{ $producto_one->tipo_producto }} <br>
+                </x-adminlte-card>
+            
+
+            @endif
             @endforeach
-        </ul> --}}
-
-        {{-- <ul>
-            @foreach ($producto as $carta_one)
-                <li>{{$carta_one->id}}</li>
+            @endif
             @endforeach
-        </ul> --}}
+        @endif
+        @endforeach
 
-        <table class="table table-light">
-
-
-            <thead class="thead-light">
-                <tr>
-                    <th>Foto</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Tipo del producto</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-
-            <tbody>
-                @foreach( $producto as $producto_one)
-                @foreach( $cartas as $carta_one)
-                @if($producto_one->carta_id == $carta_one->establecimiento_id)
-                <tr>
-                    <td>
-
-                        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto_one->ruta_foto_principal}}" width="200" alt="">
-
-                    </td>
-                    <td>{{ $producto_one->nombre_producto }}</td>
-                    <td>{{ $producto_one->descripcion_producto}}</td>
-                    <td>{{ $producto_one->precio_producto }}€</td>
-                    <td>{{ $producto_one->tipo_producto }}</td>
-                    <td>
-                        <a href="{{ url('/producto/'.$producto_one->id.'/edit') }}" class="btn btn-warning">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{ url('/producto/'.$producto_one->id) }}" method="post">
-                            @csrf
-                            {{ method_field('DELETE') }}
-                            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
-
-                        </form>
-
-                    </td>
-                </tr>
-                @endif
-                @endforeach
-                @endforeach
-            </tbody>
-
-
-        </table>
-
-
-       
 
     </div>
 
