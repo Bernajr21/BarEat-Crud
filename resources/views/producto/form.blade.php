@@ -48,14 +48,15 @@
     {{-- <input type="hidden" id="carta_id" name="carta_id" value="1"> Si lo quisieramos ocultar--}}
 
     <div class="form-group">
-        <x-adminlte-select name="carta_id" label="Selecciona establecimiento" label-class="text-dark" igroup-size="md">
+        <x-adminlte-select name="carta_id" label="Selecciona carta" label-class="text-dark" igroup-size="md">
             <x-slot name="prependSlot">
                 <div class="input-group-text bg-gradient-success">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-card"></i>
                 </div>
             </x-slot>
-            @foreach ($establecimiento as $establecimiento_one)
-            <option value="2">{{$establecimiento_one -> nombre_establecimiento}}</option>
+            @foreach ($carta as $carta_one)               
+            
+            <option value="{{$carta_one-> id}}">{{$carta_one -> establecimiento_id}}</option>
             @endforeach
         </x-adminlte-select>
     </div>

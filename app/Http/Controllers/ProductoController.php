@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Carta;
 use App\Establecimiento;
 use App\Producto;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class ProductoController extends Controller
     public function create()
     {
         $establecimiento = Establecimiento::all();
-        return view('producto.create',compact('establecimiento'));
+        $carta = Carta::all();
+        return view('producto.create',compact('carta'));
     }
 
     public function update(UpdateProducto $request, $id)

@@ -33,4 +33,26 @@ class CartaController extends Controller
         $datos['cartas'] = Carta::paginate(15);
         return view('carta.index', $datos,compact('establecimiento','producto'));
     }
+
+    public function create()
+    {
+        $carta = Carta::all();
+        $establecimiento = Establecimiento::all();
+        return view('carta.create',compact('carta','establecimiento'));
+    }
+
+    public function store(Request $request)
+    {
+       
+
+        $datosCarta = request()->except('_token');
+
+
+
+
+        //Hacemos el insert
+        Carta::insert($datosCarta);
+
+        return redirect('carta')->with('mensaje', 'Carta agregada con exito');
+    }
 }
