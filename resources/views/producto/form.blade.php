@@ -26,7 +26,7 @@
 
     <div class="form-group">
         <label for="descripcion_producto">Descripción</label>
-        <textarea row="3" class="form-control" type="text" name="descripcion_producto" value="{{isset($producto->descripcion_producto)? $producto->descripcion_producto:old('descripcion_producto') }}"></textarea>
+        <input class="form-control" type="text" name="descripcion_producto" value="{{isset($producto->descripcion_producto)? $producto->descripcion_producto:old('descripcion_producto') }}">
     </div>
 
     <div class="form-group">

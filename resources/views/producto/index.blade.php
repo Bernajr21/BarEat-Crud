@@ -42,6 +42,7 @@
                     <th>Precio</th>
                     <th>Tipo del producto</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
 

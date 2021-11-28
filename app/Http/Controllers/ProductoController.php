@@ -89,8 +89,9 @@ class ProductoController extends Controller
         $producto = Producto::findOrFail($id);
 
         $establecimiento = Establecimiento::all();
+        $carta = Carta::all();
 
-        return view('producto.edit', compact('producto'), compact('establecimiento'));
+        return view('producto.edit', compact('producto'), compact('establecimiento','carta'));
     }
 
     public function store(Request $request)
