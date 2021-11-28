@@ -52,7 +52,14 @@
                 <tr>
                     <td>
 
-                        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto_one->ruta_foto_principal}}" width="200" alt="">
+                        @if (str_contains($producto_one->ruta_foto_principal, 'https://'))
+
+                        
+                    <img class="img-thumbnail img-fluid" src="{{ $producto_one->ruta_foto_principal}}" width="200" alt="">
+                        
+                    @else
+                    <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$producto_one->ruta_foto_principal}}" width="200" alt="">
+                    @endif
 
                     </td>
                     <td>{{ $producto_one->nombre_producto }}</td>

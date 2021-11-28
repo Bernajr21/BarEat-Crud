@@ -18,7 +18,7 @@ class ProductoController extends Controller
         if ($request->is('api/*')) {
         } else {
         }
-        $datos['producto'] = Producto::paginate(15);
+        $datos['producto'] = Producto::paginate(50);
         return view('producto.index', $datos);
     }
 

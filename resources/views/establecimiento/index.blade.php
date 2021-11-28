@@ -61,9 +61,15 @@
 
             <tr>
                 <td>
+                    
+                    @if (str_contains($establecimiento_one->ruta_foto_principal, 'https://'))
 
+                        
+                    <img class="img-thumbnail img-fluid" src="{{ $establecimiento_one->ruta_foto_principal}}" width="200" alt="">
+                        
+                    @else
                     <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$establecimiento_one->ruta_foto_principal}}" width="200" alt="">
-
+                    @endif
                 </td>
                 <td>{{ $establecimiento_one->nombre_establecimiento }}</td>
                 <td>{{ $establecimiento_one->descripcion_establecimiento }}</td>
