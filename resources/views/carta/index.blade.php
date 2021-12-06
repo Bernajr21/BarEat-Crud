@@ -43,7 +43,7 @@
                 <b>Dirección:</b> {{ $establecimiento_one->dirección_establecimiento }} <br>
             </x-adminlte-card>
 
-            <h2>Nuestros productos:</h2>
+            <h3>Nuestros productos en {{$establecimiento_one->nombre_establecimiento}} :</h3>
 
             @foreach( $cartas as $carta_one)
 
@@ -59,12 +59,20 @@
                 <x-adminlte-card title="{{$producto_one->nombre_producto }}" theme="green" icon="fas fa-lg fa-hamburger">
                     <b>Descripción del Producto:</b> {{$producto_one->descripcion_producto}} <br>
                     <b>Precio:</b> {{ $producto_one->precio_producto }} <br>
-                    <b>Tipo de producto:</b> {{ $producto_one->tipo_producto }} <br>
+                    <b>Tipo de producto:</b> {{ $producto_one->tipo_producto }} <br> <br>
+                    <a href="{{ url('/producto/'.$producto_one->id.'/edit') }}" class="btn btn-warning" style="float: left; width: auto;">Editar</a>
+                    <form action="{{ url('/producto/'.$producto_one->id) }}" method="post">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <input style="float: right; width: auto" class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+
+                    </form>
                 </x-adminlte-card>
             
 
             @endif
             @endforeach
+            <hr>
             @endif
             @endforeach
         @endif

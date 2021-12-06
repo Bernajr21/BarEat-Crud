@@ -26,8 +26,11 @@
                     <i class="fas fa-home"></i>
                 </div>
             </x-slot>
+            
             @foreach ($establecimiento as $establecimiento_one)
+            @if(auth()->user()->id == $establecimiento_one->user_id)
             <option value="{{$establecimiento_one -> id}}">{{$establecimiento_one -> nombre_establecimiento}}</option>
+            @endif
             @endforeach
         </x-adminlte-select>
     </div>
